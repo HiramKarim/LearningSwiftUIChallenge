@@ -40,6 +40,8 @@ final class NetworkService: NetworkServiceProtocol {
                 return
             }
             
+            completion(.success(data, response))
+            
         }.resume()
     }
 }
