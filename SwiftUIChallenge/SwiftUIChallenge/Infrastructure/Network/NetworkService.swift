@@ -24,7 +24,7 @@ final class NetworkService: NetworkServiceProtocol {
         session.dataTask(with: request) { data, response, error in
             
             if let error = error {
-                completion(.failure(NetworkError.genericNetworkError))
+                completion(.failure(error))
                 return
             }
             

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F7F3EE62AAB8ED2003F6B2D /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F3EE52AAB8ED2003F6B2D /* MealModel.swift */; };
+		1F7F3EE82AAB9196003F6B2D /* MealListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F3EE72AAB9196003F6B2D /* MealListUseCase.swift */; };
+		1F7F3EEB2AAB9244003F6B2D /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F3EEA2AAB9244003F6B2D /* MealListViewModel.swift */; };
 		1F8A18A92AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18A82AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift */; };
 		1F8A18AB2AA9A7CD009FFB26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18AA2AA9A7CD009FFB26 /* ContentView.swift */; };
 		1F8A18AD2AA9A7D1009FFB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A18AC2AA9A7D1009FFB26 /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F7F3EE52AAB8ED2003F6B2D /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
+		1F7F3EE72AAB9196003F6B2D /* MealListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListUseCase.swift; sourceTree = "<group>"; };
+		1F7F3EEA2AAB9244003F6B2D /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		1F8A18A52AA9A7CD009FFB26 /* SwiftUIChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8A18A82AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChallengeApp.swift; sourceTree = "<group>"; };
 		1F8A18AA2AA9A7CD009FFB26 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +83,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F7F3EE12AAB8DDE003F6B2D /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F3EE72AAB9196003F6B2D /* MealListUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		1F7F3EE22AAB8DE6003F6B2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F3EE52AAB8ED2003F6B2D /* MealModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7F3EE32AAB8DFC003F6B2D /* MealDomain */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F3EE22AAB8DE6003F6B2D /* Model */,
+				1F7F3EEC2AAB92AC003F6B2D /* MealList */,
+			);
+			path = MealDomain;
+			sourceTree = "<group>";
+		};
+		1F7F3EE42AAB8E0D003F6B2D /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		1F7F3EE92AAB9231003F6B2D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F3EEA2AAB9244003F6B2D /* MealListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1F7F3EEC2AAB92AC003F6B2D /* MealList */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F3EE12AAB8DDE003F6B2D /* UseCase */,
+				1F7F3EE42AAB8E0D003F6B2D /* Mapper */,
+				1F7F3EE92AAB9231003F6B2D /* ViewModel */,
+			);
+			path = MealList;
+			sourceTree = "<group>";
+		};
 		1F8A189C2AA9A7CD009FFB26 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +202,7 @@
 		1F95587A2AAAC6EB0047D7F4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				1F7F3EE32AAB8DFC003F6B2D /* MealDomain */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -299,7 +356,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F7F3EE62AAB8ED2003F6B2D /* MealModel.swift in Sources */,
 				1F8A18AB2AA9A7CD009FFB26 /* ContentView.swift in Sources */,
+				1F7F3EEB2AAB9244003F6B2D /* MealListViewModel.swift in Sources */,
+				1F7F3EE82AAB9196003F6B2D /* MealListUseCase.swift in Sources */,
 				1F8A18A92AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift in Sources */,
 				1F9558802AAAE8970047D7F4 /* NetworkService.swift in Sources */,
 				1F95587E2AAAC89A0047D7F4 /* NetworkServiceProtocol.swift in Sources */,
