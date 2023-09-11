@@ -8,17 +8,19 @@
 import Foundation
 
 protocol MealListViewModelProtocol {
-    var meals:[MealModel]? { get set }
-    var usecase:MealListUseCaseProtocol { get set }
+    var meals: [MealModel]? { get set }
+    var errorMessage: String? { get set }
+    var usecase: MealListUseCaseProtocol { get set }
     func fetchMealList() async
-    init(usecase:MealListUseCaseProtocol)
-    func mapError(error:Error)
+    init(usecase: MealListUseCaseProtocol)
+    func mapError(error: Error)
 }
 
 class MealListViewModel: ObservableObject, MealListViewModelProtocol {
     var usecase: MealListUseCaseProtocol
     
-    @Published var meals:[MealModel]?
+    @Published var meals: [MealModel]?
+    @Published var errorMessage: String?
     
     required init(usecase: MealListUseCaseProtocol) {
         self.usecase = usecase
@@ -26,24 +28,28 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
     
     func fetchMealList() async {
         self.usecase.fetchMealList { [weak self] result in
-            guard self != nil else { return }
+            guard let strongSelf = self else { return }
             switch result {
             case let .success(mealsArray):
-                self?.meals = mealsArray
+                DispatchQueue.main.async {
+                    strongSelf.meals = mealsArray
+                }
             case let .failure(error):
-                self?.mapError(error: error)
+                strongSelf.mapError(error: error)
             }
         }
     }
     
     internal func mapError(error:Error) {
         switch error {
-        case NetworkError.connectivity: break
-        case NetworkError.timeout: break
-        case NetworkError.invalidData: break
-        case MealListMapper.JSONError.invalidJSON: break
+        case NetworkError.connectivity:
+            self.errorMessage = "Connectivity error"
+        case NetworkError.invalidData:
+            self.errorMessage = "Invalid data"
+        case MealListMapper.JSONError.invalidJSON:
+            self.errorMessage = "Invalid data to parse"
         default:
-            break
+            self.errorMessage = "There was and error, please try again."
         }
     }
 }

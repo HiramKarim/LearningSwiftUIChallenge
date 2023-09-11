@@ -20,7 +20,7 @@ extension API: EndPoint {
     var path: String {
         switch self {
         case .meals:
-            return "www.themealdb.com/api/json/v1/1/search.php?f=a"
+            return "http://themealdb.com/api/json/v1/1/search.php?f=a"
         }
     }
     
