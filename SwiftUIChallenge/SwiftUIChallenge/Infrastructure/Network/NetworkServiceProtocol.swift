@@ -13,20 +13,14 @@ public protocol EndPoint {
 }
 
 enum API {
-    case meals
     case mealByName
-    case mealByLetter
 }
 
 extension API: EndPoint {
     var path: String {
         switch self {
-        case .meals:
-            return "http://themealdb.com/api/json/v1/1/search.php?f=a"
         case .mealByName:
             return "http://themealdb.com/api/json/v1/1/search.php?s="
-        case .mealByLetter:
-            return "http://themealdb.com/api/json/v1/1/search.php?f="
         }
     }
     
@@ -64,5 +58,7 @@ public enum HTTPClientResult {
 }
 
 protocol NetworkServiceProtocol {
-    func fetchData(from endpoint: EndPoint, completion: @escaping(HTTPClientResult) -> Void)
+    func fetchData(from endpoint: EndPoint,
+                   filteringBy filter:String,
+                   completion: @escaping(HTTPClientResult) -> Void)
 }

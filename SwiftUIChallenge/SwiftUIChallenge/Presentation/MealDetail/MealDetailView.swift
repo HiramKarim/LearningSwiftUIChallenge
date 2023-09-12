@@ -32,6 +32,10 @@ struct MealDetailView: View {
                             .frame(maxWidth:.infinity)
                             .padding()
                             .font(.body)
+                        Link("Watch video", destination: viewmodel.meal.videoURL!)
+                            .buttonStyle(.bordered)
+                            .buttonBorderShape(.capsule)
+                            .controlSize(.large)
                             
                     }
                 }

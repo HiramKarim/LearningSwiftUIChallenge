@@ -11,7 +11,7 @@ protocol MealListViewModelProtocol {
     var meals: [MealModel]? { get set }
     var errorMessage: String? { get set }
     var usecase: MealListUseCaseProtocol { get set }
-    func fetchMealList() async
+    func searchMeal(of name:String) async
     init(usecase: MealListUseCaseProtocol)
     func mapError(error: Error)
 }
@@ -26,8 +26,8 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
         self.usecase = usecase
     }
     
-    func fetchMealList() async {
-        self.usecase.fetchMealList { [weak self] result in
+    func searchMeal(of name:String) async {
+        self.usecase.searchMeal(filterBy: name) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case let .success(mealsArray):
@@ -38,10 +38,6 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
                 strongSelf.mapError(error: error)
             }
         }
-    }
-    
-    func searchMeal(of name:String) {
-        
     }
     
     internal func mapError(error:Error) {

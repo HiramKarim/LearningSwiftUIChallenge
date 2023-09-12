@@ -14,7 +14,7 @@ enum MealListResult {
 
 protocol MealListUseCaseProtocol {
     typealias result = (MealListResult) -> Void
-    func fetchMealList(completion: @escaping result)
+    func searchMeal(filterBy filter: String, completion: @escaping result)
 }
 
 class MealListUseCase: MealListUseCaseProtocol {
@@ -25,8 +25,9 @@ class MealListUseCase: MealListUseCaseProtocol {
         self.network = network
     }
     
-    func fetchMealList(completion: @escaping result) {
-        self.network.fetchData(from: API.meals) { result in
+    func searchMeal(filterBy filter: String, completion: @escaping result) {
+        self.network.fetchData(from: API.mealByName,
+                               filteringBy: filter) { result in
             switch result {
             case let .success(data, response):
                 

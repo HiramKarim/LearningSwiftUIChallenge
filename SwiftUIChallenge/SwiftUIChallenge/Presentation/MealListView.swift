@@ -46,13 +46,15 @@ struct MealListView: View {
             .navigationTitle(Text("Meals"))
             .onAppear {
                 Task {
-                    await viewmodel.fetchMealList()
+                    await viewmodel.searchMeal(of: mealSearch)
                 }
             }
         }
         .searchable(text: $mealSearch)
         .onSubmit(of: .search) {
-            viewmodel.searchMeal(of: mealSearch)
+            Task {
+                await viewmodel.searchMeal(of: mealSearch)
+            }
         }
     }
 }

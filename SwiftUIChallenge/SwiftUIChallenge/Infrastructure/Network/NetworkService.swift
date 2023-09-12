@@ -8,18 +8,21 @@
 import Foundation
 
 final class NetworkService: NetworkServiceProtocol {
-    func fetchData(from endpoint: EndPoint, completion: @escaping (HTTPClientResult) -> Void) {
+    func fetchData(from endpoint: EndPoint,
+                   filteringBy filter:String = "",
+                   completion: @escaping (HTTPClientResult) -> Void) {
+        
         let config = URLSessionConfiguration.default
+        
         if #available(iOS 11, *) {
             config.waitsForConnectivity = true
             config.timeoutIntervalForResource = 600 // 10 minutes (in seconds)
         }
+        
         let session = URLSession(configuration: config)
         
-        guard let request = endpoint.request else {
-            completion(.failure(NetworkError.connectivity))
-            return
-        }
+        let apiPath = endpoint.path.appending(filter)
+        let request = URLRequest(url: URL(string: apiPath)!)
         
         session.dataTask(with: request) { data, response, error in
             
