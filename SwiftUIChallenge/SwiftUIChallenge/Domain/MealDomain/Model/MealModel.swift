@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MealModel:Identifiable {
+struct MealModel:Identifiable, Hashable {
     let id:String?
     let mealName:String?
     let category:String?

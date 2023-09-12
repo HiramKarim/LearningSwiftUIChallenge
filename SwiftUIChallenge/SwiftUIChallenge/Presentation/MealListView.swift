@@ -6,20 +6,27 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MealListView: View {
     
     @ObservedObject var viewmodel = FactoryMealViewModel.makeMealListViewModel()
+    @State private var selectedMeal: MealModel? = nil
+    @State private var destination = ""
     
     var body: some View {
         
         NavigationView {
+            
             List(viewmodel.meals ?? []) { item in
-                NavigationLink(destination: MealDetailView()) {
+                NavigationLink(destination: MealDetailView(viewmodel: MealDetailViewModel(meal: item)), tag: item, selection: $selectedMeal) {
 
                     VStack(alignment: .leading) {
                         HStack {
-                            Image(systemName: "circle.fill")
+                            KFImage(item.mealThumbURL!)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .mask(Circle())
                             Text(item.mealName ?? "")
                         }
                         .padding(.bottom, 30)
