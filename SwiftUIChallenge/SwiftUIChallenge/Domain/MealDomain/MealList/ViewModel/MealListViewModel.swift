@@ -40,6 +40,10 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
         }
     }
     
+    func searchMeal(of name:String) {
+        
+    }
+    
     internal func mapError(error:Error) {
         switch error {
         case NetworkError.connectivity:

@@ -14,6 +14,8 @@ public protocol EndPoint {
 
 enum API {
     case meals
+    case mealByName
+    case mealByLetter
 }
 
 extension API: EndPoint {
@@ -21,6 +23,10 @@ extension API: EndPoint {
         switch self {
         case .meals:
             return "http://themealdb.com/api/json/v1/1/search.php?f=a"
+        case .mealByName:
+            return "http://themealdb.com/api/json/v1/1/search.php?s="
+        case .mealByLetter:
+            return "http://themealdb.com/api/json/v1/1/search.php?f="
         }
     }
     

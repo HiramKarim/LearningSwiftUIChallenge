@@ -12,12 +12,12 @@ struct MealListView: View {
     
     @ObservedObject var viewmodel = FactoryMealViewModel.makeMealListViewModel()
     @State private var selectedMeal: MealModel? = nil
+    @State private var searchResults: [String] = []
+    @State private var mealSearch = ""
     @State private var destination = ""
     
     var body: some View {
-        
         NavigationView {
-            
             List(viewmodel.meals ?? []) { item in
                 NavigationLink(destination: MealDetailView(viewmodel: MealDetailViewModel(meal: item)), tag: item, selection: $selectedMeal) {
 
@@ -41,16 +41,19 @@ struct MealListView: View {
                         .padding(15)
                     }
                     .padding(10)
-
                 }
             }
+            .navigationTitle(Text("Meals"))
             .onAppear {
                 Task {
                     await viewmodel.fetchMealList()
                 }
             }
         }
-        
+        .searchable(text: $mealSearch)
+        .onSubmit(of: .search) {
+            viewmodel.searchMeal(of: mealSearch)
+        }
     }
 }
 
