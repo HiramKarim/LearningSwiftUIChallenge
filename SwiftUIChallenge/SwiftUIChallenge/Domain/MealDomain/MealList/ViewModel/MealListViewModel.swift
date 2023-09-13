@@ -36,7 +36,8 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
     }
     
     func searchMeal(of name:String) async {
-        self.usecase.searchMeal(filterBy: name) { [weak self] result in
+        self.usecase.searchMeal(from: API.mealByName,
+                                filterBy: name) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case let .success(mealsArray):

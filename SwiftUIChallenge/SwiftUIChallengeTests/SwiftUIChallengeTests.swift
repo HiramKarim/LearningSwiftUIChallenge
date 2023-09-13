@@ -10,27 +10,60 @@ import XCTest
 
 final class SwiftUIChallengeTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_deliversMealListForEmptyFilter() throws {
+        
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+enum MockAPI {
+    case validURL
+    case invalidURL
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+extension MockAPI: SwiftUIChallenge.EndPoint {
+    var path: String {
+        switch self {
+        case .validURL:
+            return "http://a-valid-url.com"
+        case .invalidURL:
+            return "http://a-invalid-url.com"
         }
     }
+    
+    var request: URLRequest? {
+        guard let url = URL(string: path) else { return nil }
+        return URLRequest(url: url)
+    }
+}
 
+class NetworkServiceMock: NetworkServiceProtocol {
+    func fetchData(from endpoint: SwiftUIChallenge.EndPoint,
+                   filteringBy filter: String,
+                   completion: @escaping (SwiftUIChallenge.HTTPClientResult) -> Void) {
+        
+        if endpoint.path == "http://a-valid-url.com" {
+            
+        } else if endpoint.path == "http://a-invalid-url.com" {
+            
+        }
+        
+    }
+}
+
+class MealListUseCaseMock: MealListUseCaseProtocol {
+    
+    private let network: NetworkServiceProtocol
+    
+    init(network: NetworkServiceProtocol) {
+        self.network = network
+    }
+    
+    func searchMeal(from endpoint: SwiftUIChallenge.EndPoint,
+                    filterBy filter: String,
+                    completion: @escaping result) {
+        
+    }
+    
+    
 }

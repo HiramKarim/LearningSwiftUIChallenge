@@ -12,6 +12,7 @@
 		1F7F3EE82AAB9196003F6B2D /* MealListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F3EE72AAB9196003F6B2D /* MealListUseCase.swift */; };
 		1F7F3EEB2AAB9244003F6B2D /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F3EEA2AAB9244003F6B2D /* MealListViewModel.swift */; };
 		1F8500232AAF6FF8000AF91F /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8500222AAF6FF8000AF91F /* MealDetailViewModel.swift */; };
+		1F8500252AB2495E000AF91F /* MealListMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8500242AB2495E000AF91F /* MealListMapper.swift */; };
 		1F88DDC92AAE539400E6B91C /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88DDC82AAE539400E6B91C /* MealDetailView.swift */; };
 		1F8A18A92AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18A82AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift */; };
 		1F8A18AB2AA9A7CD009FFB26 /* MealListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18AA2AA9A7CD009FFB26 /* MealListView.swift */; };
@@ -20,7 +21,6 @@
 		1F8A18BA2AA9A7D1009FFB26 /* SwiftUIChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18B92AA9A7D1009FFB26 /* SwiftUIChallengeTests.swift */; };
 		1F8A18C42AA9A7D1009FFB26 /* SwiftUIChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18C32AA9A7D1009FFB26 /* SwiftUIChallengeUITests.swift */; };
 		1F8A18C62AA9A7D1009FFB26 /* SwiftUIChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A18C52AA9A7D1009FFB26 /* SwiftUIChallengeUITestsLaunchTests.swift */; };
-		1F8A18D72AAA7C4F009FFB26 /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A18D62AAA7C4F009FFB26 /* ReadMe */; };
 		1F95587E2AAAC89A0047D7F4 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95587D2AAAC89A0047D7F4 /* NetworkServiceProtocol.swift */; };
 		1F9558802AAAE8970047D7F4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95587F2AAAE8970047D7F4 /* NetworkService.swift */; };
 		3CE0B2070258E6C1D5B86134 /* Pods_SwiftUIChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39050CB8B0CC9140290CC6C4 /* Pods_SwiftUIChallenge.framework */; };
@@ -50,6 +50,7 @@
 		1F7F3EE72AAB9196003F6B2D /* MealListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListUseCase.swift; sourceTree = "<group>"; };
 		1F7F3EEA2AAB9244003F6B2D /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		1F8500222AAF6FF8000AF91F /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
+		1F8500242AB2495E000AF91F /* MealListMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListMapper.swift; sourceTree = "<group>"; };
 		1F88DDC52AAE4B6200E6B91C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1F88DDC82AAE539400E6B91C /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		1F8A18A52AA9A7CD009FFB26 /* SwiftUIChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +63,6 @@
 		1F8A18BF2AA9A7D1009FFB26 /* SwiftUIChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8A18C32AA9A7D1009FFB26 /* SwiftUIChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChallengeUITests.swift; sourceTree = "<group>"; };
 		1F8A18C52AA9A7D1009FFB26 /* SwiftUIChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1F8A18D62AAA7C4F009FFB26 /* ReadMe */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe; sourceTree = "<group>"; };
 		1F95587D2AAAC89A0047D7F4 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		1F95587F2AAAE8970047D7F4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		39050CB8B0CC9140290CC6C4 /* Pods_SwiftUIChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +132,7 @@
 		1F7F3EE42AAB8E0D003F6B2D /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
+				1F8500242AB2495E000AF91F /* MealListMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -173,6 +174,7 @@
 		1F88DDC62AAE52D600E6B91C /* MealList */ = {
 			isa = PBXGroup;
 			children = (
+				1F8A18AA2AA9A7CD009FFB26 /* MealListView.swift */,
 			);
 			path = MealList;
 			sourceTree = "<group>";
@@ -188,7 +190,6 @@
 		1F8A189C2AA9A7CD009FFB26 = {
 			isa = PBXGroup;
 			children = (
-				1F8A18D62AAA7C4F009FFB26 /* ReadMe */,
 				1F8A18A72AA9A7CD009FFB26 /* SwiftUIChallenge */,
 				1F8A18B82AA9A7D1009FFB26 /* SwiftUIChallengeTests */,
 				1F8A18C22AA9A7D1009FFB26 /* SwiftUIChallengeUITests */,
@@ -268,7 +269,6 @@
 				1F88DDC72AAE536900E6B91C /* MealDetail */,
 				1F88DDC62AAE52D600E6B91C /* MealList */,
 				1F8A18A82AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift */,
-				1F8A18AA2AA9A7CD009FFB26 /* MealListView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -416,7 +416,6 @@
 			files = (
 				1F8A18B02AA9A7D1009FFB26 /* Preview Assets.xcassets in Resources */,
 				1F8A18AD2AA9A7D1009FFB26 /* Assets.xcassets in Resources */,
-				1F8A18D72AAA7C4F009FFB26 /* ReadMe in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +548,7 @@
 				1F7F3EEB2AAB9244003F6B2D /* MealListViewModel.swift in Sources */,
 				1F7F3EE82AAB9196003F6B2D /* MealListUseCase.swift in Sources */,
 				1F88DDC92AAE539400E6B91C /* MealDetailView.swift in Sources */,
+				1F8500252AB2495E000AF91F /* MealListMapper.swift in Sources */,
 				1F8A18A92AA9A7CD009FFB26 /* SwiftUIChallengeApp.swift in Sources */,
 				1F9558802AAAE8970047D7F4 /* NetworkService.swift in Sources */,
 				1F8500232AAF6FF8000AF91F /* MealDetailViewModel.swift in Sources */,
