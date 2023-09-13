@@ -8,6 +8,7 @@ target 'SwiftUIChallenge' do
   # Pods for SwiftUIChallenge
 
   pod 'Kingfisher', '~> 7.6.1'
+  pod 'RealmSwift', '~> 10'
 
   target 'SwiftUIChallengeTests' do
     inherit! :search_paths

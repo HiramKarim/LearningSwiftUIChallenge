@@ -16,7 +16,7 @@ final class NetworkService: NetworkServiceProtocol {
         
         if #available(iOS 11, *) {
             config.waitsForConnectivity = true
-            config.timeoutIntervalForResource = 600 // 10 minutes (in seconds)
+            config.timeoutIntervalForResource = 5 // waits 5 secs to reconnect
         }
         
         let session = URLSession(configuration: config)
@@ -24,27 +24,45 @@ final class NetworkService: NetworkServiceProtocol {
         let apiPath = endpoint.path.appending(filter)
         let request = URLRequest(url: URL(string: apiPath)!)
         
-        session.dataTask(with: request) { data, response, error in
-            
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data
-            else {
-                completion(.failure(NetworkError.invalidData))
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse
-            else {
-                completion(.failure(NetworkError.internalServerError))
-                return
-            }
-            
-            completion(.success(data, response))
-            
-        }.resume()
+        var retryAttempts:Int = 0
+        let retryCount:Int = 3
+        
+        func performRequest() {
+            session.dataTask(with: request) { data, response, error in
+                
+                if error != nil {
+                    
+                    if retryAttempts < retryCount {
+                        retryAttempts += 1
+                        // perform retry
+                        DispatchQueue.global().asyncAfter(deadline: .now()) {
+                            performRequest()
+                        }
+                    } else {
+                        completion(.failure(NetworkError.connectivity))
+                    }
+                    
+                    return
+                }
+                
+                guard let data = data
+                else {
+                    completion(.failure(NetworkError.invalidData))
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse
+                else {
+                    completion(.failure(NetworkError.internalServerError))
+                    return
+                }
+                
+                completion(.success(data, response))
+                
+            }.resume()
+        }
+        
+        performRequest()
+        
     }
 }
