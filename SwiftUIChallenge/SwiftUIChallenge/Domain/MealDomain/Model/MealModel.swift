@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct MealModel:Identifiable, Hashable {
+struct MealModel:Identifiable, Hashable, Equatable {
     let id:String?
     let mealName:String?
     let category:String?
