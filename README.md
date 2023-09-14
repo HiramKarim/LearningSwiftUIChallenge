@@ -10,9 +10,10 @@ https://www.themealdb.com/api.php
 
 Architecture implemented:
 
+![Screenshot 2023-09-13 at 11 40 21 p m](https://github.com/HiramKarim/LearningSwiftUIChallenge/assets/16406266/758da515-b348-4beb-b9bb-fd5788042017)
 
 
-![Screenshot 2023-09-13 at 11 35 11 p m](https://github.com/HiramKarim/LearningSwiftUIChallenge/assets/16406266/adba597e-2992-4f04-b40b-fdacccc35e5f)
+
 
 
 
