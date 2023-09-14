@@ -13,9 +13,7 @@ struct MealListView: View {
     
     @ObservedObject var viewmodel = FactoryMealViewModel.makeMealListViewModel()
     @State private var selectedMeal: MealModel? = nil
-    @State private var searchResults: [String] = []
     @State private var mealSearch = ""
-    @State private var destination = ""
     
     var body: some View {
         NavigationView {
@@ -50,6 +48,9 @@ struct MealListView: View {
                     await viewmodel.searchMeal(of: mealSearch)
                 }
             }
+        }
+        .alert(isPresented: $viewmodel.isAlertPresented) {
+            Alert(title: Text("Error"), message: Text(viewmodel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
         }
         .searchable(text: $mealSearch)
         .onSubmit(of: .search) {

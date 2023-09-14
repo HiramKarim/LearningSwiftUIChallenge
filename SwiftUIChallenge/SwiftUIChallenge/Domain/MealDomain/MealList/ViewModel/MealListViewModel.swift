@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol MealListViewModelProtocol {
     var meals: [MealModel]? { get set }
-    var errorMessage: String? { get set }
+    var errorMessage: String! { get set }
     var usecase: MealListUseCaseProtocol { get set }
     func searchMeal(of name:String) async
     init(usecase: MealListUseCaseProtocol)
@@ -21,7 +21,8 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
     var usecase: MealListUseCaseProtocol
     
     @Published var meals: [MealModel]?
-    @Published var errorMessage: String?
+    @Published var errorMessage: String!
+    @Published var isAlertPresented = false
     
     private var realm: Realm!
     
@@ -60,6 +61,7 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
             break
         default:
             DispatchQueue.main.async {
+                self.isAlertPresented = true
                 self.errorMessage = "There was and error, please try again."
             }
         }
