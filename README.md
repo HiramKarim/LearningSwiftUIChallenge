@@ -8,4 +8,11 @@ This is a simple master-detail view that shows a list of meals and a spared view
 web page of the API service:
 https://www.themealdb.com/api.php
 
+Architecture implemented:
+
+
+
+![Screenshot 2023-09-13 at 11 35 11 p m](https://github.com/HiramKarim/LearningSwiftUIChallenge/assets/16406266/adba597e-2992-4f04-b40b-fdacccc35e5f)
+
+
 
