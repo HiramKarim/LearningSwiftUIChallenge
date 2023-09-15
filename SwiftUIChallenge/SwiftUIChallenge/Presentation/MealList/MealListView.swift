@@ -16,37 +16,49 @@ struct MealListView: View {
     @State private var mealSearch = ""
     
     var body: some View {
+        
         NavigationView {
-            List(viewmodel.meals ?? []) { item in
-                NavigationLink(destination: MealDetailView(viewmodel: MealDetailViewModel(meal: item)), tag: item, selection: $selectedMeal) {
+            
+            if let meals = viewmodel.meals,
+                meals.isEmpty {
+                Text("Meals not found")
+                .foregroundColor(.secondary)
+            } else {
+                
+                List(viewmodel.meals ?? []) { item in
+                    NavigationLink(destination: MealDetailView(viewmodel: MealDetailViewModel(meal: item)), tag: item, selection: $selectedMeal) {
 
-                    VStack(alignment: .leading) {
-                        HStack {
-                            KFImage(item.mealThumbURL!)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .mask(Circle())
-                            Text(item.mealName ?? "")
-                        }
-                        .padding(.bottom, 30)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                KFImage(item.mealThumbURL!)
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .mask(Circle())
+                                Text(item.mealName ?? "")
+                            }
+                            .padding(.bottom, 30)
 
-                        HStack {
-                            Image(systemName: "fork.knife")
-                            Text(item.category ?? "")
-                            Spacer()
-                            Image(systemName: "location.circle")
-                            Text(item.location ?? "")
+                            HStack {
+                                Image(systemName: "fork.knife")
+                                Text(item.category ?? "")
+                                Spacer()
+                                Image(systemName: "location.circle")
+                                Text(item.location ?? "")
+                            }
+                            .padding(15)
                         }
-                        .padding(15)
+                        .padding(10)
                     }
-                    .padding(10)
                 }
+                .navigationTitle(Text("Meals"))
+                
             }
-            .navigationTitle(Text("Meals"))
-            .onAppear {
-                Task {
-                    await viewmodel.searchMeal(of: mealSearch)
-                }
+            
+            
+        }
+        .onAppear {
+            Task {
+                await viewmodel.searchMeal(of: mealSearch)
             }
         }
         .alert(isPresented: $viewmodel.isAlertPresented) {

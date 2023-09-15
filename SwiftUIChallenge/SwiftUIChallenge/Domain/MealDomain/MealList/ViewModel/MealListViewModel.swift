@@ -44,7 +44,9 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
             case let .success(mealsArray):
                 DispatchQueue.main.async {
                     strongSelf.meals = mealsArray
-                    strongSelf.saveMealsToLocalStorage(meals: mealsArray)
+                    if !mealsArray.isEmpty {
+                        strongSelf.saveMealsToLocalStorage(meals: mealsArray)
+                    }
                 }
             case let .failure(error):
                 strongSelf.mapError(error: error)
@@ -61,6 +63,7 @@ class MealListViewModel: ObservableObject, MealListViewModelProtocol {
             break
         default:
             DispatchQueue.main.async {
+                self.meals = []
                 self.isAlertPresented = true
                 self.errorMessage = "There was and error, please try again."
             }
