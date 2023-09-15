@@ -14,6 +14,7 @@ struct MealListView: View {
     @ObservedObject var viewmodel = FactoryMealViewModel.makeMealListViewModel()
     @State private var selectedMeal: MealModel? = nil
     @State private var mealSearch = ""
+    @State private var previousMealSearch = ""
     
     var body: some View {
         
@@ -66,9 +67,27 @@ struct MealListView: View {
         }
         .searchable(text: $mealSearch)
         .onSubmit(of: .search) {
+            
+            if mealSearch.containsEmoji() {
+                mealSearch = ""
+                return
+            } else if mealSearch.contains(" ") {
+                mealSearch = ""
+            }
+            
             Task {
                 await viewmodel.searchMeal(of: mealSearch)
             }
+        }
+        .onChange(of: previousMealSearch) { newValue in
+            if newValue.isEmpty {
+                Task {
+                    await viewmodel.searchMeal(of: "")
+                }
+            } else {
+                
+            }
+            previousMealSearch = mealSearch
         }
     }
 }
@@ -85,5 +104,18 @@ class FactoryMealViewModel {
         let useCase = MealListUseCase(network: networkLayer)
         let viewmodel = MealListViewModel(usecase: useCase)
         return viewmodel
+    }
+}
+
+extension String {
+    func containsEmoji() -> Bool {
+        let emojiPattern = "[\\p{Emoji}]"
+        if let regex = try? NSRegularExpression(pattern: emojiPattern, options: []) {
+            let range = NSRange(location: 0, length: self.utf16.count)
+            if regex.firstMatch(in: self, options: [], range: range) != nil {
+                return true
+            }
+        }
+        return false
     }
 }
